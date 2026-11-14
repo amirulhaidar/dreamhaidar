@@ -14,9 +14,42 @@
  }
  const videos = [...document.querySelectorAll('video')];
  const control = document.querySelector('.motion-control');
- const setPaused = paused => {videos.forEach(v => {if(paused)v.pause();else v.play().catch(()=>{});});document.body.classList.toggle('motion-paused',paused);control.setAttribute('aria-pressed', String(paused));control.textContent = paused ? 'Putar video ▷' : 'Jeda video Ⅱ';};
- control.addEventListener('click',()=>setPaused(control.getAttribute('aria-pressed')!=='true'));
- if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)setPaused(true);
+ let userPaused = false;
+ const updatePlaybackControl = () => {
+  const paused = videos.every(video => video.paused);
+  document.body.classList.toggle('motion-paused', paused);
+  control.setAttribute('aria-pressed', String(paused));
+  control.textContent = paused ? 'Putar video ▷' : 'Jeda video Ⅱ';
+ };
+ const startVideos = () => {
+  if (userPaused) return;
+  videos.forEach(video => {
+   const playback = video.play();
+   if (playback) playback.catch(updatePlaybackControl);
+  });
+ };
+ videos.forEach(video => {
+  video.muted = true;
+  video.defaultMuted = true;
+  video.autoplay = true;
+  video.loop = true;
+  video.playsInline = true;
+  video.addEventListener('loadeddata', startVideos, {once:true});
+  video.addEventListener('play', updatePlaybackControl);
+  video.addEventListener('pause', updatePlaybackControl);
+ });
+ control.addEventListener('click', () => {
+  userPaused = !videos.every(video => video.paused);
+  if (userPaused) videos.forEach(video => video.pause());
+  else startVideos();
+  updatePlaybackControl();
+ });
+ window.addEventListener('pageshow', startVideos);
+ document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) startVideos();
+ });
+ updatePlaybackControl();
+ startVideos();
  const form = document.querySelector('#inquiry-form');
  const status = form.querySelector('.form-status');
  const summary = form.querySelector('.summary');

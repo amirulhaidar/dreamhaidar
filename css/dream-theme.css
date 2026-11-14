@@ -1,17 +1,22 @@
 /* Dream Travel and Tourism — navy, white and maroon.
-   Artwork is supplied by the owner; do not invert or distort it. */
+   Supplied artwork keeps its proportions; use a white silhouette over the hero. */
 :root{--navy:#101f54;--maroon:#781d35;--ink:var(--navy);--paper:#fff;--red:var(--maroon);--green:var(--maroon);--line:#dce1ed}
 ::selection{background:var(--maroon);color:#fff}
-.header,.header.scrolled{background:rgba(255,255,255,.98);color:var(--navy);box-shadow:0 1px 0 #101f5414}
+.header{background:transparent;color:#fff;box-shadow:none}
+.header.scrolled{background:rgba(255,255,255,.98);color:var(--navy);box-shadow:0 1px 0 #101f5414}
+.header:not(.scrolled) .nav>a:not(.brand){text-shadow:0 1px 8px #0005}
+.header:not(.scrolled) .nav>a:not(.brand):hover{color:#fff;text-decoration:underline;text-underline-offset:7px}
 .nav{gap:32px;height:100px}
 .brand{display:flex;align-items:center;width:230px;height:84px;flex-shrink:0;margin:0 14px}
-.brand img,.header.scrolled .brand img{filter:none;width:100%;height:100%;object-fit:contain}
+.brand img{filter:brightness(0) invert(1);width:100%;height:100%;object-fit:contain}
+.header.scrolled .brand img{filter:none}
 .nav>a:not(.brand){position:relative}
 .nav>a:not(.brand):hover{opacity:1;color:var(--maroon)}
 .mobile-nav{border-top:1px solid var(--line)}
 .mobile-nav a:hover,.page-header nav a:hover,.footer-grid>div>a:hover{color:var(--maroon)}
-.hero-ambient video{filter:none;opacity:.36}
-.hero-ambient:after{background:linear-gradient(90deg,#101f5420,#101f5475)}
+.hero-ambient{background:#969696;opacity:1}
+.hero-ambient video{filter:grayscale(1);opacity:1}
+.hero-ambient:after{background:rgba(70,70,70,.23)}
 .hero-inner{padding-top:150px}
 .film-caption{background:var(--maroon);line-height:1.8;font-size:10px}
 .hero-copy .button.light,.services .button.light,.collab .button.light,.service-cta .button.light{background:var(--maroon);color:#fff;border-color:var(--maroon)}
