@@ -1,0 +1,49 @@
+/* Dream Travel and Tourism — navy, white and maroon.
+   Artwork is supplied by the owner; do not invert or distort it. */
+:root{--navy:#101f54;--maroon:#781d35;--ink:var(--navy);--paper:#fff;--red:var(--maroon);--green:var(--maroon);--line:#dce1ed}
+::selection{background:var(--maroon);color:#fff}
+.header,.header.scrolled{background:rgba(255,255,255,.98);color:var(--navy);box-shadow:0 1px 0 #101f5414}
+.nav{gap:32px;height:100px}
+.brand{display:flex;align-items:center;width:230px;height:84px;flex-shrink:0;margin:0 14px}
+.brand img,.header.scrolled .brand img{filter:none;width:100%;height:100%;object-fit:contain}
+.nav>a:not(.brand){position:relative}
+.nav>a:not(.brand):hover{opacity:1;color:var(--maroon)}
+.mobile-nav{border-top:1px solid var(--line)}
+.mobile-nav a:hover,.page-header nav a:hover,.footer-grid>div>a:hover{color:var(--maroon)}
+.hero-ambient video{filter:none;opacity:.36}
+.hero-ambient:after{background:linear-gradient(90deg,#101f5420,#101f5475)}
+.hero-inner{padding-top:150px}
+.film-caption{background:var(--maroon);line-height:1.8;font-size:10px}
+.hero-copy .button.light,.services .button.light,.collab .button.light,.service-cta .button.light{background:var(--maroon);color:#fff;border-color:var(--maroon)}
+.button.dark{background:var(--maroon);color:#fff}
+.button.dark:hover,.hero-copy .button.light:hover,.services .button.light:hover,.collab .button.light:hover,.service-cta .button.light:hover{background:#5c1429;border-color:#5c1429}
+.button:focus-visible{outline-color:#a63250}
+.section-light .eyebrow,.section-light .italic-label,.service-detail .eyebrow,.guide-section>.eyebrow{color:var(--maroon)}
+.section-light .text-link{color:var(--maroon)}
+.side-label{border-color:var(--line);color:var(--maroon)}
+.city-art{background:#f1f3f9;color:var(--navy)}
+.city-art:before,.city-art:after{border-color:#781d3533}
+.city-art .city-arabic{color:var(--maroon)}
+.steps span{color:var(--maroon)}
+.watermark{font-size:clamp(150px,27vw,390px);top:-30px}
+.services h2{font-size:clamp(34px,4.6vw,57px)}
+.service-grid article{border-top:2px solid #ffffff45}
+.service-grid .number{color:#e1b7c3}
+.statement{border-block:5px solid var(--maroon)}
+.inquiry-form input:focus,.inquiry-form select:focus,.inquiry-form textarea:focus{border-bottom-color:var(--maroon)}
+.inquiry-form input::placeholder,.inquiry-form textarea::placeholder{color:#66718a;opacity:1}
+.footer-logo{width:270px;max-width:100%;background:#fff;border-radius:8px;padding:14px}
+.footer-logo img{width:100%;height:auto;object-fit:contain}
+.footer-grid{grid-template-columns:1.1fr .7fr 1.2fr;gap:55px}
+.footer-grid>div>a:hover{color:#e1b7c3}
+.page-brand{display:block;flex-shrink:0}
+.page-brand img{width:235px;height:76px;object-fit:contain}
+.page-header{min-height:100px}
+.service-jumps a:hover{border-color:#e1b7c3;color:#e1b7c3}
+.guide-profile{background:var(--navy);border:1px solid #2b3e73;border-top:4px solid var(--maroon)}
+.guide-profile h3{color:#fff}
+.guide-profile-category{color:#e1b7c3}
+.guide-slider-stage .guide-arrow{color:var(--maroon)}
+@media(max-width:1000px){.nav{gap:23px}.brand{width:205px;margin:0 5px}.footer-grid{gap:30px}.page-brand img{width:205px}}
+@media(max-width:700px){.header .nav{height:84px}.brand{width:185px;height:70px;margin:0}.hero{padding-top:116px}.hero-inner{padding:0}.film-caption{font-size:9px}.footer-grid{grid-template-columns:1fr 1fr;gap:28px}.footer-logo{width:100%;padding:10px}.footer-message{grid-column:1/-1}.page-header{flex-wrap:wrap;justify-content:center;padding:10px 22px 14px;gap:5px}.page-brand img{width:210px;height:68px}.page-header nav{justify-content:center;width:100%;gap:24px;font-size:12px}.watermark{top:0}.services h2{font-size:38px}}
+@media(max-width:360px){.brand{width:155px}.services h2{font-size:32px}.footer-grid{grid-template-columns:1fr}.footer-logo{width:230px}.hero h1{font-size:34px}}
