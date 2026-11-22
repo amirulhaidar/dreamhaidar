@@ -52,3 +52,14 @@
 @media(max-width:1000px){.nav{gap:23px}.brand{width:205px;margin:0 5px}.footer-grid{gap:30px}.page-brand img{width:205px}}
 @media(max-width:700px){.header .nav{height:84px}.brand{width:185px;height:70px;margin:0}.hero{padding-top:116px}.hero-inner{padding:0}.film-caption{font-size:9px}.footer-grid{grid-template-columns:1fr 1fr;gap:28px}.footer-logo{width:100%;padding:10px}.footer-message{grid-column:1/-1}.page-header{flex-wrap:wrap;justify-content:center;padding:10px 22px 14px;gap:5px}.page-brand img{width:210px;height:68px}.page-header nav{justify-content:center;width:100%;gap:24px;font-size:12px}.watermark{top:0}.services h2{font-size:38px}}
 @media(max-width:360px){.brand{width:155px}.services h2{font-size:32px}.footer-grid{grid-template-columns:1fr}.footer-logo{width:230px}.hero h1{font-size:34px}}
+
+/* Supplied November 2026 artwork: white header and round footer logos. */
+.header .brand img{filter:none}
+.header .brand .brand-white{display:block}
+.header .brand .brand-navy{display:none}
+.header.scrolled .brand .brand-white{display:none}
+.header.scrolled .brand .brand-navy{display:block}
+.footer .footer-logo{background:transparent;border-radius:0;padding:0;width:240px;max-width:100%;justify-self:start}
+.footer-logo img{height:auto;aspect-ratio:1;object-fit:contain}
+.about-visual img{height:auto;aspect-ratio:3/4;object-fit:contain}
+@media(max-width:700px){.footer .footer-logo{width:190px}}
