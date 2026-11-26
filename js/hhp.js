@@ -15,6 +15,7 @@
  const videos = [...document.querySelectorAll('video')];
  const control = document.querySelector('.motion-control');
  let userPaused = false;
+ let heroVisible = true;
  const updatePlaybackControl = () => {
   const paused = videos.every(video => video.paused);
   document.body.classList.toggle('motion-paused', paused);
@@ -22,7 +23,7 @@
   control.textContent = paused ? 'Putar video ▷' : 'Jeda video Ⅱ';
  };
  const startVideos = () => {
-  if (userPaused) return;
+  if (userPaused || document.hidden || !heroVisible) return;
   videos.forEach(video => {
    const playback = video.play();
    if (playback) playback.catch(updatePlaybackControl);
@@ -46,8 +47,18 @@
  });
  window.addEventListener('pageshow', startVideos);
  document.addEventListener('visibilitychange', () => {
-  if (!document.hidden) startVideos();
+  if (document.hidden) videos.forEach(video => video.pause());
+  else startVideos();
  });
+ // Resume from the current timestamp when the hero returns to view.
+ if ('IntersectionObserver' in window) {
+  const heroObserver = new IntersectionObserver(entries => {
+   heroVisible = entries[0].isIntersecting;
+   if (heroVisible) startVideos();
+   else videos.forEach(video => video.pause());
+  }, {threshold: 0});
+  heroObserver.observe(document.querySelector('.hero'));
+ }
  updatePlaybackControl();
  startVideos();
  const form = document.querySelector('#inquiry-form');

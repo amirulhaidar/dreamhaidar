@@ -63,3 +63,9 @@
 .footer-logo img{height:auto;aspect-ratio:1;object-fit:contain}
 .about-visual img{height:auto;aspect-ratio:3/4;object-fit:contain}
 @media(max-width:700px){.footer .footer-logo{width:190px}}
+
+/* Full portrait frame: no crop, reserved dimensions prevent layout shift. */
+.hero{min-height:850px}
+.hero .hero-film{width:min(100%,290px)}
+.hero .hero-film video{width:100%;height:auto;aspect-ratio:9/16;object-fit:contain;background:#101f54}
+@media(max-width:700px){.hero{min-height:0}.hero .hero-film{width:70%;max-width:300px}}
