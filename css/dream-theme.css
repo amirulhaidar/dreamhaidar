@@ -66,6 +66,16 @@
 
 /* Full portrait frame: no crop, reserved dimensions prevent layout shift. */
 .hero{min-height:850px}
-.hero .hero-film{width:min(100%,290px)}
-.hero .hero-film video{width:100%;height:auto;aspect-ratio:9/16;object-fit:contain;background:#101f54}
+.hero .hero-film{width:min(100%,290px);margin-inline:auto;min-width:0;box-shadow:none;border:0}
+.hero .hero-film video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:contain;background:#101f54;border:0;outline:0;box-shadow:none}
 @media(max-width:700px){.hero{min-height:0}.hero .hero-film{width:70%;max-width:300px}}
+
+/* Original vertical contact tab, with WhatsApp below the text. */
+.whatsapp-side{display:block;position:fixed;right:0;top:42%;padding:0;writing-mode:horizontal-tb;z-index:40;background:#fff;color:var(--maroon);border:1px solid var(--line);border-radius:0;font-size:9px;letter-spacing:1.5px}
+.whatsapp-side a{display:flex;flex-direction:column;align-items:center;gap:12px;padding:18px 8px;text-decoration:none}
+.whatsapp-side-text{writing-mode:vertical-rl;white-space:nowrap}
+.whatsapp-side svg{display:block;flex-shrink:0;width:24px;height:24px;color:#128c4a;animation:wa-logo-pulse 2.8s ease-in-out infinite}
+.whatsapp-side a:hover{background:#fafbfe}
+@keyframes wa-logo-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.12);opacity:.72}}
+@media(max-width:700px){.whatsapp-side{display:block}}
+@media(prefers-reduced-motion:reduce){.whatsapp-side svg{animation:none}.js-ready .reveal{transition:none;transform:none}}
