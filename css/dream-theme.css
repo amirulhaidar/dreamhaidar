@@ -79,3 +79,13 @@
 @keyframes wa-logo-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.12);opacity:.72}}
 @media(max-width:700px){.whatsapp-side{display:block}}
 @media(prefers-reduced-motion:reduce){.whatsapp-side svg{animation:none}.js-ready .reveal{transition:none;transform:none}}
+
+/* Equal-width repeated groups produce a seamless belt, independent of videos. */
+.ticker{position:relative}
+.ticker>.ticker-track{display:flex;width:max-content;will-change:transform}
+.ticker-group{display:block;flex:0 0 auto;min-width:100vw;padding-right:2ch}
+.ticker[data-motion="running"]>.ticker-track{animation:ticker 38s linear infinite!important;animation-play-state:running!important}
+.ticker[data-motion="paused"]>.ticker-track{animation:ticker 38s linear infinite!important;animation-play-state:paused!important}
+.ticker-toggle{position:absolute;right:10px;top:50%;transform:translateY(-50%);z-index:1;min-height:32px;padding:5px 10px;border:1px solid #ffffff65;border-radius:4px;color:#fff;background:#781d35;font-size:10px;letter-spacing:.5px;line-height:1.4}
+.ticker-toggle:hover{background:#5c1429}
+@media(max-width:700px){.ticker{padding-block:12px}.ticker-toggle{right:6px;font-size:9px}}

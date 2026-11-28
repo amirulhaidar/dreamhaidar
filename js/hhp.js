@@ -12,14 +12,25 @@
   const observer = new IntersectionObserver(entries => entries.forEach(e => {if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}}),{threshold:0.08});
   document.querySelectorAll('.reveal').forEach(e => observer.observe(e));
  }
+ // The text belt has its own pause state; video visibility never controls it.
+ const ticker = document.querySelector('.ticker');
+ if (ticker) {
+  const toggle = ticker.querySelector('.ticker-toggle');
+  let paused = false;
+  const syncTicker = () => {
+   ticker.dataset.motion = paused ? 'paused' : 'running';
+   toggle.setAttribute('aria-pressed', String(paused));
+   toggle.textContent = paused ? 'Putar teks ▷' : 'Jeda teks Ⅱ';
+  };
+  toggle.addEventListener('click', () => { paused = !paused; syncTicker(); });
+  syncTicker();
+ }
  const videos = [...document.querySelectorAll('video')];
  const control = document.querySelector('.motion-control');
  let userPaused = false;
  let heroVisible = true;
  const updatePlaybackControl = () => {
-  const paused = videos.every(video => video.paused);
-  document.body.classList.toggle('motion-paused', paused);
-  control.setAttribute('aria-pressed', String(paused));
+  const paused = videos.every(video => video.paused);  control.setAttribute('aria-pressed', String(paused));
   control.textContent = paused ? 'Putar video ▷' : 'Jeda video Ⅱ';
  };
  const startVideos = () => {
@@ -62,6 +73,7 @@
  updatePlaybackControl();
  startVideos();
  const form = document.querySelector('#inquiry-form');
+ if (!form) return;
  const status = form.querySelector('.form-status');
  const summary = form.querySelector('.summary');
  const field = name => form.elements.namedItem(name);

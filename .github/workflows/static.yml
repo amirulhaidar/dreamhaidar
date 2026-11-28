@@ -22,6 +22,7 @@ jobs:
         shell: bash
         run: |
           node scripts/check-site.mjs
+          for file in js/*.js scripts/*.mjs; do node --check "$file"; done
           test -s assets/haidar-hero.mp4
           test -s assets/haidar-hero-poster.jpg
           test -s assets/haidar-profile-new.jpg
